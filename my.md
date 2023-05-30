@@ -18,4 +18,6 @@
                 </div>
             @endif
 
-            //this is for the login and the register and the dashboard
+            //I ended up messing the links or the href in the forms component that is linked to the home. fix with when you get to do it.
+
+       

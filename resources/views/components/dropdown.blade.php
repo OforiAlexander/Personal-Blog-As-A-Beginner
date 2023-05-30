@@ -38,6 +38,7 @@ switch ($width) {
             @click="open = false">
         <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
             {{ $content }}
+            {{-- put the categories and the tag links here that only shows when the user is the admin of the post or the page --}}
         </div>
     </div>
 </div>

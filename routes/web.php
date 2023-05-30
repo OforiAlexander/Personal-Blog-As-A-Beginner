@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-     $posts =  Post::get_all();
-     return view('home', ['posts' => $posts]);
+Route::get('/', [PostController::class, 'index']);
+
+
+Route::get('post/{post:slug}', function (Post $post) {
+    return view("post", ['post' =>$post]);
 });
 
+Route::get('categories/{category:slug}', function(Category $category){
+    return view('home', ['posts' =>  $category->posts]);
+});
+Route::get('author/{author:username}', function(User $author){
+    return view('home', ['posts' =>  $author->posts]);
+});
+
+
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', [
+        'posts'=> Post::latest()->get()
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -31,7 +47,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
-Route::get('post/{post}', function ($slug) {
-    return view("post", ['post' => Post::find($slug)]);
-})->where('post', '[A-z_\-.]+');
