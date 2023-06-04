@@ -44,6 +44,11 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        {{-- Editing Post --}}
+                        <x-dropdown-link :href="route('index')">
+                            {{ __('Posts') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -52,10 +57,8 @@
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
-
                             </x-dropdown-link>
                         </form>
-                        
                     </x-slot>
                 </x-dropdown>
             </div>
