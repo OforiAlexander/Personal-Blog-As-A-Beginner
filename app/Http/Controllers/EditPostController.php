@@ -9,8 +9,8 @@ class EditPostController extends Controller
 {
     public function edit(Post $post)
     {
-        return view('admin.edit.post',[
-            'posts'=> $post
+        return view('admin.edit.post', [
+            'posts' => $post
         ]);
     }
 

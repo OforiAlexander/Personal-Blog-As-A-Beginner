@@ -28,24 +28,23 @@ class PostController extends Controller
     public function store()
     {
 
+          $attributes = request()->validate([
+               'excerpt' => 'required',
+               'thumbnail' => 'required|image',
+               'title' => 'required',
+               'body' => 'required',
+               'slug' => ['required', Rule::unique('posts', 'id')],
+               'category_id' => ['required', Rule::exists('categories', 'id')]
 
-        dd(request()->file('thumbnail'));
-    //    $path = request()->file('thumbnail')->store('thumbnails');
-    //    return 'done'. $path;
-        //  $attributes = request()->validate([
-        //       'excerpt' => 'required',
-        //       'title' => 'required',
-        //       'body' => 'required',
-        //       'slug' => ['required', Rule::unique('posts', 'id')],
-        //       'category_id' => ['required', Rule::exists('categories', 'id')]
+           ]);
 
-        //   ]);
+           $attributes['user_id'] =auth()->id();
+           $attributes['thumbnail']= request()->file('thumbnail')->store('thumbnails');
+           
+           Post::create($attributes);
 
-        //   $attributes['user_id'] = Auth::id();
-        //   Post::create($attributes);
-
-        //   return redirect('/');
+           return redirect('/');
         
-    // ddd(request()->all());
     }
 }
+//  Auth::id()
