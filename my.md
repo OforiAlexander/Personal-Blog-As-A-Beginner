@@ -18,6 +18,8 @@
                 </div>
             @endif
 
-        i ended today with a problem of linking the create submit button to be able to make a submittion. in the page for creating a post, there are a few problems with the links that more to other pages like that of the edit page and the publish button. I have already created the route and the directory to the controler but if you get confused look at the controller and do your changes. I think that you will easily make the changes when you take another look at the video fron 62 to be abel to get how he made the 
+        i ended today with a problem of linking the create submit button to be able to make a submittion. in the page for creating a post, there are a few problems with the links that more to other pages like that of the edit page and the publish button. I have already created the route and the directory to the controler but if you get confused look at the controller and do your changes. I think that you will easily make the changes when you take another look at the video fron 62 to be abel to get how he made the //
+
+        onclick="window.location.href = 'edit/{{ $post->id }}/post'"
 
        
