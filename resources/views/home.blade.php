@@ -1,4 +1,5 @@
 <x-post-component.header>
+    <x-search/>
     <x-form.login />
     @foreach ($posts as $post)
         <x-post-section :post="$post">

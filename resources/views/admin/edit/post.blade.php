@@ -20,9 +20,9 @@
                                     {{ old('body', $posts->body) }}
                                 </textarea>
                             </div>
-                            {{-- @error()
+                           @error('body')
                                     <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
-                                @enderror --}}
+                                @enderror 
                         </div>
 
                         {{-- Images Side of the form  --}}
@@ -56,9 +56,9 @@
                                     {{ old('excerpt', $posts->excerpt) }}
                                 </textarea>
                             </div>
-                            {{-- @error()
+                             @error('excerpt')
                                     <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
-                                @enderror --}}
+                                @enderror 
                         </div>
 
                         {{-- for slug --}}
@@ -69,9 +69,9 @@
                                 <input id="slug" name="slug" value="{{ old('slug', $posts->slug) }}"
                                     class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                             </div>
-                            {{-- @error()
+                             @error('slug')
                                     <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
-                                @enderror --}}
+                                @enderror 
                         </div>
                     </div>
                 </div>
