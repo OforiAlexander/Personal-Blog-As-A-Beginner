@@ -6,4 +6,5 @@
                 {{ $slot }}
         </div>
     </div>
+    
 </section>

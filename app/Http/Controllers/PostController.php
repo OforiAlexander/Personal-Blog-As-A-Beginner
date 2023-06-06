@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('home', ['posts' =>  Post::latest()->get()]);
+        return view('home', ['posts' =>  Post::latest()->paginate(3)]);
     }
 
     public function show(Post $post)

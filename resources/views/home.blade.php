@@ -7,4 +7,5 @@
         </x-post-section>
     @endforeach
 
+{{ $posts->links() }}
 </x-post-component.header>
