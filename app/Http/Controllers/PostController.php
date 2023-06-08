@@ -13,14 +13,21 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('home', ['posts' =>  Post::latest()->paginate(3)]);
+        // dd(request('search'));
+        $post = Post::latest();
+        if (request('search')) {
+            $post
+            ->where('title', 'like' , '%' . request('search'). '%')
+            ->orWhere('body', 'like' , '%' . request('search'). '%');
+        }
+        return view('home', ['posts' => $post->paginate(3)]);
     }
 
     public function show(Post $post)
     {
-        return view("post", ['post' =>$post]);
+        return view("post", ['post' => $post]);
     }
-    
+
     public function create()
     {
         return view('posts.create');
@@ -28,23 +35,22 @@ class PostController extends Controller
     public function store()
     {
 
-          $attributes = request()->validate([
-               'excerpt' => 'required',
-               'thumbnail' => 'required|image',
-               'title' => 'required',
-               'body' => 'required',
-               'slug' => ['required', Rule::unique('posts', 'id')],
-               'category_id' => ['required', Rule::exists('categories', 'id')]
+        $attributes = request()->validate([
+            'excerpt' => 'required',
+            'thumbnail' => 'required|image',
+            'title' => 'required',
+            'body' => 'required',
+            'slug' => ['required', Rule::unique('posts', 'id')],
+            'category_id' => ['required', Rule::exists('categories', 'id')]
 
-           ]);
+        ]);
 
-           $attributes['user_id'] =auth()->id();
-           $attributes['thumbnail']= request()->file('thumbnail')->store('thumbnails');
-           
-           Post::create($attributes);
+        $attributes['user_id'] = auth()->id();
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
-           return redirect('/');
-        
+        Post::create($attributes);
+
+        return redirect('/');
     }
 }
 //  Auth::id()

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostsDashboard;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use App\Models\Post;
@@ -33,11 +34,8 @@ Route::get("admin/posts/create", [PostController::class, 'create'])
 
 Route::post("admin/posts", [PostController::class, 'store'])->middleware('admin');
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'posts'=> Post::latest()->get()
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [PostsDashboard::class, 'index'])
+->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
