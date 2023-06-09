@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostsDashboard;
 use App\Http\Controllers\ProfileController;
@@ -21,10 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index']);
 Route::get('post/{post:slug}', [PostController::class, 'show']);
+Route::get('categories/{category:slug}',[CategoryController::class, 'index']);
 
-Route::get('categories/{category:slug}', function (Category $category) {
-    return view('home', ['posts' =>  $category->posts]);
-});
 Route::get('author/{author:username}', function (User $author) {
     return view('home', ['posts' =>  $author->posts]);
 });

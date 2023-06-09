@@ -68,8 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::patch("admin/post/{post}", [EditPostController::class, 'update'])
     ->name('update');
 
-    Route::delete("admin/posts/{post}", [EditPostController::class, 'destroy'])
-    ->name('update');
+    Route::delete("admin/posts/{post}", [EditPostController::class, 'destroy']);
 
     Route::get("admin/post", [AdminPostController::class, 'index'])
     ->name('index');

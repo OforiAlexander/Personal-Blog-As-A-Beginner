@@ -17,15 +17,14 @@ class EditPostController extends Controller
 
     public function update(Post $post)
     {
+        //   dd(request()->file('thumbnail')->store('thumbnails'));
         $attributes = request()->validate([
-            "title" => 'required',
-            "body" => 'required',
-            "thumbnail" => 'image',
-            "excerpt" => 'required',
-            'slug' => ['required', Rule::unique('posts', 'id')->ignore($post->id)],
-            'category_id' => ['required', Rule::exists('categories', 'id')]
+            'title' => 'required',
+            'thumbnail' => 'image',
+            'excerpt' => 'required',
+            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
+            'body' => 'required'
         ]);
-
         if (isset($attributes['thumbnail'])) {
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         }

@@ -1,5 +1,9 @@
 <x-app-layout>
     <x-form.layout>
+        <x-button url="/">
+            Back Home
+        </x-button>
+        
         <form action="/admin/post/{{ $posts->id }}" method="post" class="mx-auto" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -10,7 +14,18 @@
                     <p class="mt-1 text-sm leading-6 text-white">Edit and Save Your Current Changes</p>
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div class="col-span-full">
+                            <label for="title" class="block text-sm font-medium leading-6 text-white">Title</label>
+                            <div class="mt-2">
+                                <input id="title" name="title" value="{{ old('title', $posts->title) }}"
+                                    class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+                            @error('title')
+                                <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
+                            @enderror
+                        </div>
 
+                        {{-- for body --}}
 
                         <div class="col-span-full">
                             <label for="body" class="block text-sm font-medium leading-6 text-white">Body</label>
@@ -20,32 +35,28 @@
                                     {{ old('body', $posts->body) }}
                                 </textarea>
                             </div>
-                           @error('body')
-                                    <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
-                                @enderror 
+                            @error('body')
+                                <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
+                            @enderror
                         </div>
 
                         {{-- Images Side of the form  --}}
 
                         <div class="col-span-full">
-                            <div
-                                class="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10">
-                                <div class="text-center">
-                                    <div class="mt-4 flex text-sm leading-6 text-white">
-                                        <label for="image-upload"
-                                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                            <span class="p-3">Upload a Image</span>
-                                            <input id="image-upload" name="image-upload" type="file" class="sr-only"
-                                                value="{{ old('thumbnail', $posts->thumbnail) }}">
-                                        </label>
-                                    </div>
-                                    <p class="text-xs leading-5 text-white">PNG, JPG, GIF up to 10MB</p>
-                                </div>
-                                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-64 lg:h-64"
-                                    src="{{ asset('storage/' . $posts->thumbnail) }}"alt="">
+                            <label for="thumbnail"
+                                class="block text-sm font-medium leading-6 text-white">Thumbnail</label>
+                            <div class="mt-2 border-indigo-500">
+                                <input class="cursor-pointer" type="file" id="thumbnail" name="thumbnail"
+                                    value="{{ old('thumbnail'. $posts->thumbnail) }}">
                             </div>
-                        </div>
 
+                            <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-64 lg:h-64"
+                                src="{{ asset('storage/' . $posts->thumbnail) }}"alt="">
+
+                            @error('thumbnail')
+                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                            @enderror
+                        </div>
                         {{-- for excerpt --}}
 
                         <div class="col-span-full">
@@ -56,9 +67,9 @@
                                     {{ old('excerpt', $posts->excerpt) }}
                                 </textarea>
                             </div>
-                             @error('excerpt')
-                                    <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
-                                @enderror 
+                            @error('excerpt')
+                                <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
+                            @enderror
                         </div>
 
                         {{-- for slug --}}
@@ -69,14 +80,14 @@
                                 <input id="slug" name="slug" value="{{ old('slug', $posts->slug) }}"
                                     class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                             </div>
-                             @error('slug')
-                                    <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
-                                @enderror 
+                            @error('slug')
+                                <p class="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
             </div>
-            <x-form.button button1="Cancel" button2="Save" url="/admin/post" />
+            <x-form.button button1="Cancel" button2="Save"  url=/admin/post/>
         </form>
     </x-form.layout>
 
