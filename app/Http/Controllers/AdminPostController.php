@@ -10,7 +10,7 @@ class AdminPostController extends Controller
    public function index()
    {
     return view('admin.post',[
-        'posts'=>Post::paginate(50)
+        'posts'=>Post::all()
     ]);
    }
 }

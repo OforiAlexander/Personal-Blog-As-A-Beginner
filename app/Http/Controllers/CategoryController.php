@@ -12,6 +12,6 @@ class CategoryController extends Controller
     {
         //  return view('post', ['post' =>  $category->posts]); 
         $post = $category->posts;
-    return view('post', ['posts' => $post]);
+        return view('home', ['posts' => $post]);
     }
 }
