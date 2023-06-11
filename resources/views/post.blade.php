@@ -7,5 +7,3 @@
     Back Home
 </x-button>
 </x-post-component.header>
-
-<p></p>
