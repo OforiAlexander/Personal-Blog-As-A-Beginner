@@ -15,8 +15,8 @@
         </x-button>
 
         {{-- create the form for the post --}}
-        <form action="/admin/posts" method="post" class="mx-auto" enctype="multipart/form-data">
-        @csrf
+        <form action="{{ route('posts.store') }}" method="post" class="mx-auto" enctype="multipart/form-data">
+            @csrf
 
             <div class="space-y-12">
                 <div class="border-b border-white/10 pb-12">
@@ -63,7 +63,8 @@
 
                         {{-- for image --}}
                         <div class="col-span-full">
-                            <label for="thumbnail" class="block text-sm font-medium leading-6 text-white">Thumbnail</label>
+                            <label for="thumbnail"
+                                class="block text-sm font-medium leading-6 text-white">Thumbnail</label>
                             <div class="mt-2 border-indigo-500">
                                 <input class="cursor-pointer" type="file" id="thumbnail" name="thumbnail" required>
                             </div>
