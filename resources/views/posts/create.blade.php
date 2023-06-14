@@ -30,19 +30,17 @@
                                 </textarea>
                             </div>
                             @error('title')
-                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                                <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-span-full">
                             <label for="body" class="block text-sm font-medium leading-6 text-white">Body</label>
-                            <div class="mt-2">
-                                <textarea id="body" name="body" rows="3" required
-                                    class="block w-full rounded-md border-0 py-1.5 px-1 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                   {{ old('body') }}
-                                </textarea>
+                            <div class="mt-2 bg-white">
+                                <input id="body" name="body" value="{{ old('body') }}"
+                                    class="block bg-white outline-none w-full rounded-md border-0 py-1.5 px-1 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                             </div>
                             @error('body')
-                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                                <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -53,11 +51,11 @@
                             <div class="mt-2">
                                 <textarea id="excerpt" name="excerpt" rows="1" required
                                     class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    {{ old('body') }}
+                                    {{ old('excerpt') }}
                              </textarea>
                             </div>
                             @error('excerpt')
-                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                                <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -69,7 +67,7 @@
                                 <input class="cursor-pointer" type="file" id="thumbnail" name="thumbnail" required>
                             </div>
                             @error('thumbnail')
-                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                                <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -82,7 +80,7 @@
                                     class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                             </div>
                             @error('slug')
-                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                                <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -101,7 +99,7 @@
                                 </select>
                             </div>
                             @error('category_id')
-                                <p class="mt-3 text-sm leading-6 text-white">{{ $message }}</p>
+                                <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -113,3 +111,10 @@
         </form>
     </x-form.layout>
 </x-app-layout>
+
+<script>
+     var quill = new Quill('#body', {
+         theme: 'snow'
+     });
+  
+</script>

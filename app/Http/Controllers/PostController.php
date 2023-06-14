@@ -31,6 +31,10 @@ class PostController extends Controller
 
     public function create()
     {
+        if(!auth()->user()->email_verified_at)
+        {
+            return back();
+        }
         return view('posts.create');
     }
 

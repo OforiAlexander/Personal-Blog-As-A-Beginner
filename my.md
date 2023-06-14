@@ -22,4 +22,18 @@
 
         onclick="window.location.href = 'edit/{{ $post->id }}/post'"
 
+        <div class="mt-2 bg-white">
+                                <input id="body" name="body" value="{{ old('body') }}"
+                                    class="block bg-white outline-none w-full rounded-md border-0 py-1.5 px-1 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+
+                             <div class="mt-2 ">
+                                <div class="block bg-white rounded-md border border-gray-300">
+                                    <div id="quill-body" class="p-1">
+                                        <div id="editor" class="h-48"></div>
+                                    </div>
+                                </div>
+                                <textarea id="body" name="body" rows="3" class="">{{ old('body') }}</textarea>
+                            </div>
+
        

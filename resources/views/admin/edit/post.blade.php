@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <x-form.button button1="Cancel" button2="Save" url=/admin/post />
+            <x-form.button button1="Cancel" button2="Save" url="/users/post" />
         </form>
     </x-form.layout>
 
