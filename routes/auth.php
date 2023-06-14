@@ -62,15 +62,4 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get("admin/edit/{post}/post", [EditPostController::class, 'edit'])
-    ->name('edit');
-
-    Route::patch("admin/post/{post}", [EditPostController::class, 'update'])
-    ->name('update');
-
-    Route::delete("admin/posts/{post}", [EditPostController::class, 'destroy']);
-
-    Route::get("admin/post", [AdminPostController::class, 'index'])
-    ->name('index');
-    
 });

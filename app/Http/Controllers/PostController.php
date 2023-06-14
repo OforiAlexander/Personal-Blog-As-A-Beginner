@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 
@@ -17,8 +18,8 @@ class PostController extends Controller
         $post = Post::latest();
         if (request('search')) {
             $post
-            ->where('title', 'like' , '%' . request('search'). '%')
-            ->orWhere('body', 'like' , '%' . request('search'). '%');
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('body', 'like', '%' . request('search') . '%');
         }
         return view('home', ['posts' => $post->paginate(3)]);
     }
@@ -32,9 +33,9 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
+
     public function store()
     {
-
         $attributes = request()->validate([
             'excerpt' => 'required',
             'thumbnail' => 'required|image',
@@ -52,5 +53,38 @@ class PostController extends Controller
 
         return redirect('/');
     }
+
+    public function edit(Post $post)
+    {
+        return view('admin.edit.post', [
+            'posts' => $post
+        ]);
+    }
+
+    public function update(Post $post)
+    {
+        //   dd(request()->file('thumbnail')->store('thumbnails'));
+        $attributes = request()->validate([
+            'title' => 'required',
+            'thumbnail' => 'image',
+            'excerpt' => 'required',
+            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
+            'body' => 'required'
+        ]);
+        if (isset($attributes['thumbnail'])) {
+            $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        }
+
+        $post->update($attributes);
+        return back();
+    }
+
+    public function destroy(Post $post)
+    {
+        Gate::authorize('delete', $post);
+
+        $post->delete();
+
+        return back();
+    }
 }
-//  Auth::id()
