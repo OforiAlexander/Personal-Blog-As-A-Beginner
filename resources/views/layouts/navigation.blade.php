@@ -45,7 +45,7 @@
                         </x-dropdown-link>
 
                         {{-- Editing Post --}}
-                        <x-dropdown-link :href="route('index')">
+                        <x-dropdown-link :href="route('users.posts.index')">
                             {{ __('Posts') }}
                         </x-dropdown-link>
 

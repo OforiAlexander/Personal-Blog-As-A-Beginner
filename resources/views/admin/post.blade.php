@@ -3,7 +3,7 @@
         <x-button url="/">
             Back Home
         </x-button>
-        <x-button url="posts/create">
+        <x-button url="{{route('posts.create')}}">
             Create Post
         </x-button>
 
@@ -17,7 +17,7 @@
                             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                 <div class="text-sm">
                                     <div class="font-medium text-gray-700"><a
-                                            href="/post/{{ $post->slug }}">{{ $post->title }}</a></div>
+                                            href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></div>
                                 </div>
                             </th>
                             <td class="px-6 py-4">
@@ -29,7 +29,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
-                                    <form action="/admin/posts/{{ $post->id }}" method="post">
+                                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button>
@@ -41,7 +41,7 @@
                                             </svg>
                                         </button>
                                     </form>
-                                    <a x-data="{ tooltip: 'Edite' }" href="edit/{{ $post->id }}/post">
+                                    <a x-data="{ tooltip: 'Edite' }" href="{{ route('posts.edit', $post->id) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="h-6 w-6"
                                             x-tooltip="tooltip">

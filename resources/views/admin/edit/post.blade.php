@@ -3,8 +3,8 @@
         <x-button url="/">
             Back Home
         </x-button>
-        
-        <form action="/admin/post/{{ $posts->id }}" method="post" class="mx-auto" enctype="multipart/form-data">
+
+        <form action="{{ route('posts.update',$posts->id) }}" method="post" class="mx-auto" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
@@ -47,7 +47,7 @@
                                 class="block text-sm font-medium leading-6 text-white">Thumbnail</label>
                             <div class="mt-2 border-indigo-500">
                                 <input class="cursor-pointer" type="file" id="thumbnail" name="thumbnail"
-                                    value="{{ old('thumbnail'. $posts->thumbnail) }}">
+                                    value="{{ old('thumbnail' . $posts->thumbnail) }}">
                             </div>
 
                             <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-64 lg:h-64"
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <x-form.button button1="Cancel" button2="Save"  url=/admin/post/>
+            <x-form.button button1="Cancel" button2="Save" url=/admin/post />
         </form>
     </x-form.layout>
 
