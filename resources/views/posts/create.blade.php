@@ -15,7 +15,8 @@
         </x-button>
 
         {{-- create the form for the post --}}
-        <form action="{{ route('posts.store') }}" method="post" class="mx-auto" enctype="multipart/form-data">
+        <form action="{{ route('posts.store') }}" method="post" class="mx-auto" enctype="multipart/form-data"
+            spellcheck="false">
             @csrf
 
             <div class="space-y-12">
@@ -38,10 +39,14 @@
 
                             <div class="mt-2">
                                 <div class="block bg-white rounded-md border border-gray-300">
-                                  <div id="editor" class="h-48"><?= isset($_POST['body']) ? $_POST['body'] : '' ?></div>
+                                    <div id="editor" class="h-48">
+                                        {!! old('body') !!}
+                                    </div>
                                 </div>
-                                <textarea id="body" name="body" style="display: none;"><?= isset($_POST['body']) ? $_POST['body'] : '' ?></textarea>
-                              </div>
+                                <textarea id="body" name="body" style="display: none;">
+                                    {!! old('body') !!}
+                                </textarea>
+                            </div>
                             @error('body')
                                 <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
@@ -121,18 +126,7 @@
         theme: 'snow'
     });
 
-    quill.on('text-change', function() {
-      var html = quill.root.innerHTML;
-      var text = quill.getText();
-
-      document.getElementById('editor').value = html;
-      document.getElementById('body').value = text;
-    });
-
     function savePost() {
-      var content = document.getElementById('body').value;
-      // Additional logic to save the content to the database can be added here
-      console.log('Content saved:', content);
+        document.getElementById('body').value = quill.root.innerHTML;
     }
-
 </script>

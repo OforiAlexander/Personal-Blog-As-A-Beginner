@@ -58,3 +58,16 @@
     });
 
        
+    quill.on('text-change', function() {
+      var html = quill.root.innerHTML;
+      var text = quill.getText();
+
+      document.getElementById('editor').value = html;
+      document.getElementById('body').value = text;
+    });
+
+    function savePost() {
+      var content = document.getElementById('body').value;
+      // Additional logic to save the content to the database can be added here
+      console.log('Content saved:', content);
+    }
