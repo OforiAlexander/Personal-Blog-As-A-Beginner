@@ -36,4 +36,25 @@
                                 <textarea id="body" name="body" rows="3" class="">{{ old('body') }}</textarea>
                             </div>
 
+
+                            <div class="mt-2 bg-white">
+                                <input id="body" name="body" value="{{ old('body') }}"
+                                    class="block bg-white outline-none w-full rounded-md border-0 py-1.5 px-1 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+
+                               <div class="mt-5">
+                               <input type="hidden" name="body" id="body" value="{{ old('body') }}">
+                               <div id="text-area">{{ old('body') }}</div>
+                            </div>
+
+                             var observer = new MutationObserver(function() {
+        var contents = quill.root.textContent;
+        document.getElementById('body').value = contents;
+    });
+
+    observer.observe(quill.root, {
+        childList: true,
+        subtree: true
+    });
+
        

@@ -35,10 +35,13 @@
                         </div>
                         <div class="col-span-full">
                             <label for="body" class="block text-sm font-medium leading-6 text-white">Body</label>
-                            <div class="mt-2 bg-white">
-                                <input id="body" name="body" value="{{ old('body') }}"
-                                    class="block bg-white outline-none w-full rounded-md border-0 py-1.5 px-1 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                            </div>
+
+                            <div class="mt-2">
+                                <div class="block bg-white rounded-md border border-gray-300">
+                                  <div id="editor" class="h-48"><?= isset($_POST['body']) ? $_POST['body'] : '' ?></div>
+                                </div>
+                                <textarea id="body" name="body" style="display: none;"><?= isset($_POST['body']) ? $_POST['body'] : '' ?></textarea>
+                              </div>
                             @error('body')
                                 <p class="mt-3 text-sm leading-6 text-red-500">{{ $message }}</p>
                             @enderror
@@ -105,16 +108,31 @@
                     </div>
                 </div>
             </div>
-            <x-primary-button>
+            <x-primary-button onclick="savePost()">
                 Publish
             </x-primary-button>
         </form>
     </x-form.layout>
 </x-app-layout>
 
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
-     var quill = new Quill('#body', {
-         theme: 'snow'
-     });
-  
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+
+    quill.on('text-change', function() {
+      var html = quill.root.innerHTML;
+      var text = quill.getText();
+
+      document.getElementById('editor').value = html;
+      document.getElementById('body').value = text;
+    });
+
+    function savePost() {
+      var content = document.getElementById('body').value;
+      // Additional logic to save the content to the database can be added here
+      console.log('Content saved:', content);
+    }
+
 </script>
