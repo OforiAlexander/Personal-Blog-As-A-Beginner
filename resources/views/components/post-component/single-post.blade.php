@@ -13,7 +13,7 @@
                 </h1>
 
                 <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                    {{ $post->body }}
+                    {!! $post->body !!}
                 </p>
             </div>
         </div>
