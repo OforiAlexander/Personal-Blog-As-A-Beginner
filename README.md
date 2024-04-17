@@ -10,7 +10,8 @@ Repository that is used in [this link](https://github.com/OforiAlexander/Persona
 
 - - - - -
 
-![Laravel Notifications]()
+![Laravel Notifications](![create_blog](https://github.com/OforiAlexander/Personal-Blog-As-A-Beginner/assets/110553162/9d67e1b0-145d-4391-8690-0c6c9b5aa14f)
+)
 
 - - - - -
 
