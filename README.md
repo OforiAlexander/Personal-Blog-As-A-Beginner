@@ -6,12 +6,20 @@ Repository that is used in [this link](https://github.com/OforiAlexander/Persona
 
 ## Screenshots 
 
-![Laravel Notifications]()
+### Dashboard View (Dark Mode)
+![Laravel Notifications](https://github.com/OforiAlexander/Personal-Blog-As-A-Beginner/assets/110553162/6da14efc-9c64-4033-a62f-72cbfc543fd9)
 
 - - - - -
 
-![Laravel Notifications]()
+### Single Blog View (Dark Mode)
+![Laravel Notifications](https://github.com/OforiAlexander/Personal-Blog-As-A-Beginner/assets/110553162/9ff04427-423e-4beb-9672-1ace251aab7f)
 
+- - - - -
+### Write a blog
+![Laravel Notifications](https://github.com/OforiAlexander/Personal-Blog-As-A-Beginner/assets/110553162/7b4d6303-20c8-44f1-b867-26dfa2a9d10f)
+
+
+# Clone Repo To See More Features: CRUD
 - - - - -
 
 ## How to use
