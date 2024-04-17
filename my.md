@@ -71,3 +71,18 @@
       // Additional logic to save the content to the database can be added here
       console.log('Content saved:', content);
     }
+
+
+
+
+     <div class="mt-2">
+                                <textarea id="body" name="body" rows="3"
+                                    class="block w-full rounded-md border-0 py-1.5 px-1 text-black shadow-sm ring-1 ring-inset ring-white placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    {{ old('body', $posts->body) }}
+                                </textarea>
+                            </div>
+
+
+                            @section('bodyEditor', old('body', $posts->body))
+                                
+                                @section('TxBody', old('body'))

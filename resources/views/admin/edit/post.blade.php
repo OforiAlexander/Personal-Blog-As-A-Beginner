@@ -4,7 +4,7 @@
             Back Home
         </x-button>
 
-        <form action="{{ route('posts.update',$posts->id) }}" method="post" class="mx-auto" enctype="multipart/form-data">
+        <form action="{{ route('posts.update', $posts->id) }}" method="post" class="mx-auto" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
